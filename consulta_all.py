@@ -10,9 +10,9 @@ print("TODAS LAS FACULTADES Y SUS CARRERAS")
 print("=" * 60)
 facultades = session.query(Facultad).all()
 for f in facultades:
-    print(f)
+    print(f"Facultad: {f.nombre}")
     for c in f.carreras:
-        print(f"  -> {c}")
+        print(f"  -> {c.nombre}")
     print("-" * 60)
 
 print()
@@ -21,7 +21,7 @@ print("TODOS LOS PROFESORES")
 print("=" * 60)
 profesores = session.query(Profesor).all()
 for p in profesores:
-    print(p)
+    print(f"Profesor: {p.nombres} {p.apellidos}")
     print(f"  Carrera: {p.carrera.nombre}")
     print("-" * 60)
 
@@ -31,6 +31,6 @@ print("TODOS LOS RECURSOS ACADÉMICOS")
 print("=" * 60)
 recursos = session.query(RecursoAcademico).all()
 for r in recursos:
-    print(r)
+    print(f"Recurso: {r.titulo} ({r.tipo})")
     print(f"  Profesor: {r.profesor.nombres} {r.profesor.apellidos}")
     print("-" * 60)

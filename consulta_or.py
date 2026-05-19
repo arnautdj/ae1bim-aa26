@@ -16,7 +16,7 @@ profesores = session.query(Profesor).filter(
     )
 ).all()
 for p in profesores:
-    print(p)
+    print(f"Profesor: {p.nombres} {p.apellidos}")
     print(f"  Carrera: {p.carrera.nombre}")
     print(f"  Facultad: {p.carrera.facultad.nombre}")
     print("-" * 60)
@@ -29,7 +29,6 @@ recursos = session.query(RecursoAcademico).filter(
     or_(RecursoAcademico.tipo == 'libro', RecursoAcademico.tipo == 'guía didáctica')
 ).all()
 for r in recursos:
-    print(r)
+    print(f"Recurso: {r.titulo} ({r.tipo})")
     print(f"  Profesor: {r.profesor.nombres} {r.profesor.apellidos}")
-    print(f"  Especialidad: {r.profesor.especialidad}")
     print("-" * 60)

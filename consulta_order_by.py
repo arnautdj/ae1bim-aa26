@@ -10,7 +10,7 @@ print("PROFESORES ORDENADOS POR APELLIDOS (A-Z)")
 print("=" * 60)
 profesores = session.query(Profesor).order_by(Profesor.apellidos).all()
 for p in profesores:
-    print(p)
+    print(f"Profesor: {p.nombres} {p.apellidos}")
     print(f"  Carrera: {p.carrera.nombre}")
     print("-" * 60)
 
@@ -20,6 +20,6 @@ print("RECURSOS ACADÉMICOS ORDENADOS POR FECHA DE PUBLICACIÓN (más reciente p
 print("=" * 60)
 recursos = session.query(RecursoAcademico).order_by(RecursoAcademico.fecha_publicacion.desc()).all()
 for r in recursos:
-    print(r)
+    print(f"Recurso: {r.titulo} | Fecha: {r.fecha_publicacion}")
     print(f"  Profesor: {r.profesor.nombres} {r.profesor.apellidos}")
     print("-" * 60)
