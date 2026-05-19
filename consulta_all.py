@@ -5,32 +5,32 @@ from crear_base_entidades import Facultad, Carrera, Profesor, RecursoAcademico
 Session = sessionmaker(bind=engine)
 session = Session()
 
-print("=" * 60)
+print("================================================")
 print("TODAS LAS FACULTADES Y SUS CARRERAS")
-print("=" * 60)
+print("================================================")
 facultades = session.query(Facultad).all()
 for f in facultades:
     print(f"Facultad: {f.nombre}")
     for c in f.carreras:
-        print(f"  -> {c.nombre}")
-    print("-" * 60)
+        print(f"  Carrera: {c.nombre}")
+    print("--------------------------------------------")
 
 print()
-print("=" * 60)
+print("================================================")
 print("TODOS LOS PROFESORES")
-print("=" * 60)
+print("================================================")
 profesores = session.query(Profesor).all()
 for p in profesores:
     print(f"Profesor: {p.nombres} {p.apellidos}")
     print(f"  Carrera: {p.carrera.nombre}")
-    print("-" * 60)
+    print("--------------------------------------------")
 
 print()
-print("=" * 60)
+print("================================================")
 print("TODOS LOS RECURSOS ACADÉMICOS")
-print("=" * 60)
+print("================================================")
 recursos = session.query(RecursoAcademico).all()
 for r in recursos:
     print(f"Recurso: {r.titulo} ({r.tipo})")
     print(f"  Profesor: {r.profesor.nombres} {r.profesor.apellidos}")
-    print("-" * 60)
+    print("--------------------------------------------")

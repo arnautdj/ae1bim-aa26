@@ -5,21 +5,20 @@ from crear_base_entidades import Facultad, Carrera, Profesor, RecursoAcademico
 Session = sessionmaker(bind=engine)
 session = Session()
 
-print("=" * 60)
+print("================================================")
 print("PROFESORES ORDENADOS POR APELLIDOS (A-Z)")
-print("=" * 60)
+print("================================================")
 profesores = session.query(Profesor).order_by(Profesor.apellidos).all()
 for p in profesores:
     print(f"Profesor: {p.nombres} {p.apellidos}")
-    print(f"  Carrera: {p.carrera.nombre}")
-    print("-" * 60)
+    print("--------------------------------------------")
 
 print()
-print("=" * 60)
+print("================================================")
 print("RECURSOS ACADÉMICOS ORDENADOS POR FECHA DE PUBLICACIÓN (más reciente primero)")
-print("=" * 60)
+print("================================================")
 recursos = session.query(RecursoAcademico).order_by(RecursoAcademico.fecha_publicacion.desc()).all()
 for r in recursos:
     print(f"Recurso: {r.titulo} | Fecha: {r.fecha_publicacion}")
     print(f"  Profesor: {r.profesor.nombres} {r.profesor.apellidos}")
-    print("-" * 60)
+    print("--------------------------------------------")
